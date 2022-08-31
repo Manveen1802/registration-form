@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta content="text">
+    <meta name="viewport" content="width=device-width , initial scale=1.0">
+    <title>Registration Form</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+    <style>
+        .required-field::after {
+            content: ' *';
+            color: red;
+        }
+
+        .position-relative {
+            position: relative;
+        }
+
+        .error-msg {
+            position: absolute;
+            bottom: -20px;
+            left: 10px;
+            color: red;
+        }
+        
+        .error-mob
+        {   
+            position: absolute;
+            bottom: -20px;
+            left: 10px;
+            color: red;
+
+        }
+        .error-qual
+        {
+            position: absolute;
+            bottom: -20px;
+            left: 10px;
+            color: red;
+
+        }
+        .error-email
+        {
+            position: absolute;
+            bottom: -20px;
+            left: 10px;
+            color: red;
+        }
+        .error-age
+        {
+            position: absolute;
+            bottom: -20px;
+            left: 10px;
+            color: red;
+        }
+        .error-gen{
+            position: absolute;
+            bottom: -20px;
+            left: 10px;
+            color: red;
+
+        }
+    </style>
+
+</head>
+
+
+<body>
+
+    <div class="container-fluid">
+
+        <div class="row">
+            <div class="col 12 md 6">
+                <h1>Football Registration Form</h1>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-8 ">
+
+                <h2>Form</h2>
+                <form action="#" onsubmit="myfunction(event); return false;">
+
+                    <div class="row">
+                        <div class="col-12 col-md-6 position-relative mb-4">
+                            <label class="d-block required-field " for="fname">First Name</label>
+                            <input type="text" id="fname" name="fname">
+                            <div class="error-msg" id="errorname"></div>
+                        </div>
+                        <div class="col-12 col-md-6  mb-4">
+                            <label class="d-block" for="lname">Last name</label>
+                            <input type="text" id="lname" name="lname">
+                        </div>
+                        <div class="col-12 col-md-6 position-relative mb-4">
+                            <label class="d-block required-field " for="mobno">Mobile no</label>
+                            <input type="text" id="mobno" name="mobno">
+                            <div class="error-mob" id="errormob"></div>
+                        </div>
+                        
+                        <div class="col-12 col-md-6 position-relative mb-4";>
+                            <label class="d-block required-field" for="qual">Qualification</label>
+                            <input type="text" id="qual" name="qual">
+                            <div class="error-msg" id="errorqual"></div>
+                        </div>
+                        <div class="col-12 col-md-6 position-relative mb-4">
+                            <label class="d-block required-field" for="email">Email</label>
+                            <input type="text " id=" email" name="email">
+                            <div class="error-msg" id="erroremail"></div>
+
+                        </div>
+                        <div class="col-12 col-md-6 position-relative mb-4">
+                            <label class="d-block required-field" for="age">Age</label>
+                            <input type="text" id="age" name="age">
+                            <div class="error-msg" id="errorage"></div>
+                        </div>
+                        <div class="col-12 col-md-6  mb-4">
+                            <label class="d-block required-field " for="gen">Gender</label>
+                            <input type="radio" id="male" name="gen" value="male" checked>
+                            <label for="male">Male</label>
+                            <input type="radio" id="female" name="gen" value="female">
+                            <label for="female">female</label>
+                        </div>
+                        <div class="col-12 col-md-6 mb-4">
+                            <label class="d-block" for="h">Height</label>
+                            <input type="text" id="h" name="h">`
+                        </div>
+                        <div class="col-12 col-md-6 mb-4">
+                            <label class="d-block" for="w">Weight</label>
+                            <input type="text" id="w" name="w">
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-12 d-flex justify-content-end " ">
+                        <button type=" reset" value=" reset" style="margin-right:10px ;">Cancel</button>
+                        <button type="submit" value="submit" style="margin-left: 10px;">Submit</button>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+
+
+            <div class="col-4 ">
+                <h2>Offers</h2>
+            </div>
+
+
+
+
+
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous">
+            </script>
+        <script>
+
+
+
+
+           
+            function validateForm(e) {
+                const formdata = new FormData(e.target);
+                const formprops = Object.fromEntries(formdata);
+                let error = false;
+                if (formprops.fname === "") {
+                    error = true;
+                    document.getElementById('errorname').innerHTML = "Please enter a valid First Name";
+                }
+                
+                if(formprops.mobno ==="")
+                {
+                    error=true;
+                    document.getElementById('errormob').innerHTML="please enter a mobile no";
+
+                }
+                if(formprops.qual==="")
+                {
+                    error=true;
+                    document.getElementById('errorqual').innerHTML="please enter your qualification";
+                }
+                if(formprops.email==="")
+                {
+                    error=true;
+                    document.getElementById('erroremail').innerHTML="please enter ur email id";
+                }
+                if(formprops.age==="")
+                {
+                    error=true;
+                    document.getElementById('errorage').innerHTML="please enter your age";
+
+                }
+               
+                return !error;
+            }
+
+            function myfunction(e) {
+                if (validateForm(e)) {
+
+                    e.preventDefault();
+                    const formdata = new FormData(e.target);
+                    const formprops = Object.fromEntries(formdata);
+                    var stringify = JSON.stringify(formprops);
+                    alert("Registration succesful" + stringify)
+
+                }
+            }
+
+
+
+
+
+
+
+        </script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous">
+            </script>
+    </div>
+
+
+</body>
+
+</html>
