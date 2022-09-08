@@ -23,44 +23,6 @@
             left: 10px;
             color: red;
         }
-        
-        .error-mob
-        {   
-            position: absolute;
-            bottom: -20px;
-            left: 10px;
-            color: red;
-
-        }
-        .error-qual
-        {
-            position: absolute;
-            bottom: -20px;
-            left: 10px;
-            color: red;
-
-        }
-        .error-email
-        {
-            position: absolute;
-            bottom: -20px;
-            left: 10px;
-            color: red;
-        }
-        .error-age
-        {
-            position: absolute;
-            bottom: -20px;
-            left: 10px;
-            color: red;
-        }
-        .error-gen{
-            position: absolute;
-            bottom: -20px;
-            left: 10px;
-            color: red;
-
-        }
     </style>
 
 </head>
@@ -79,13 +41,13 @@
         <div class="row">
             <div class="col-8 ">
 
-                <h2>Form</h2>
+                <h2>Form </h2>
                 <form action="#" onsubmit="myfunction(event); return false;">
 
                     <div class="row">
                         <div class="col-12 col-md-6 position-relative mb-4">
                             <label class="d-block required-field " for="fname">First Name</label>
-                            <input type="text" id="fname" name="fname">
+                            <input type="text" id="fname" name="fname" oninput="validateFname(event)">
                             <div class="error-msg" id="errorname"></div>
                         </div>
                         <div class="col-12 col-md-6  mb-4">
@@ -93,25 +55,25 @@
                             <input type="text" id="lname" name="lname">
                         </div>
                         <div class="col-12 col-md-6 position-relative mb-4">
-                            <label class="d-block required-field " for="mobno">Mobile no</label>
-                            <input type="text" id="mobno" name="mobno">
-                            <div class="error-mob" id="errormob"></div>
+                            <label class="d-block required-field " for="mobno ">Mobile no</label>
+                            <input type="text" id="mobno" name="mobno" oninput="validateMobno(event)">
+                            <div class="error-msg" id="errormob"></div>
                         </div>
-                        
-                        <div class="col-12 col-md-6 position-relative mb-4";>
+
+                        <div class="col-12 col-md-6 position-relative mb-4" ;>
                             <label class="d-block required-field" for="qual">Qualification</label>
                             <input type="text" id="qual" name="qual">
                             <div class="error-msg" id="errorqual"></div>
                         </div>
                         <div class="col-12 col-md-6 position-relative mb-4">
                             <label class="d-block required-field" for="email">Email</label>
-                            <input type="text " id=" email" name="email">
+                            <input type="text " id=" email" name="email" oninput="validateEmail(event)">
                             <div class="error-msg" id="erroremail"></div>
 
                         </div>
                         <div class="col-12 col-md-6 position-relative mb-4">
                             <label class="d-block required-field" for="age">Age</label>
-                            <input type="text" id="age" name="age">
+                            <input type="text" id="age" name="age" oninput="validateAge(event)">
                             <div class="error-msg" id="errorage"></div>
                         </div>
                         <div class="col-12 col-md-6  mb-4">
@@ -121,9 +83,10 @@
                             <input type="radio" id="female" name="gen" value="female">
                             <label for="female">female</label>
                         </div>
-                        <div class="col-12 col-md-6 mb-4">
+                        <div class="col-12 col-md-6 position-relative mb-4">
                             <label class="d-block" for="h">Height</label>
-                            <input type="text" id="h" name="h">`
+                            <input type="text" id="h" name="h" oninput="validateHeight(event)">
+                            <div class="error-msg" id="errorh"></div>
                         </div>
                         <div class="col-12 col-md-6 mb-4">
                             <label class="d-block" for="w">Weight</label>
@@ -134,7 +97,7 @@
                     <div class="row">
                         <div class="col-12 d-flex justify-content-end " ">
                         <button type=" reset" value=" reset" style="margin-right:10px ;">Cancel</button>
-                        <button type="submit" value="submit" style="margin-left: 10px;">Submit</button>
+                            <button type="submit" value="submit" style="margin-left: 10px;">Submit</button>
                         </div>
                     </div>
                 </form>
@@ -150,16 +113,74 @@
 
 
 
+
         </div>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous">
             </script>
         <script>
+            function validateFname(e) {
+                const pattern = /[a-zA-Z]{3}/;
+                const isValid = pattern.test(e.target.value);
 
+                if (!isValid) {
+                    error = true;
+                    document.getElementById("errorname").innerHTML = "name should be atleast 3 characters";
+                }
+                else {
+                    document.getElementById("errorname").innerHTML = "";
+                }
+            }
+            function validateMobno(e) {
+                const pattern = /^[6-9][0-9]{9}$/;
+                const isValid = pattern.test(e.target.value);
+                if (!isValid) {
+                    error = true;
+                    document.getElementById("errormob").innerHTML = "mobile no should be of 10 digits and strt wth 7,8and 9 ";
+                }
+                else {
+                    document.getElementById("errormob").innerHTML = "";
+                }
+            }
+            function validateEmail(e) {
+                const pattern = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+                const isValid = pattern.test(e.target.value);
+                if (!isValid) {
+                    error = true;
+                    document.getElementById("erroremail").innerHTML = "entered email should be charaters,numbers sand symbols";
+                }
+                else {
+                    document.getElementById("errroremail").innerHTML = "";
 
+                }
+            }
+            function validateAge(e) {
+                const pattern = /^1[2-9]|[2-5][0-9]|60/;
+                const isValid = pattern.test(e.target.value);
+                if (!isValid) {
+                    error = true;
+                    document.getElementById("errorage").innerHTML = "enter age under 12 to 60";
+                }
+                else {
+                    document.getElementById("errorage").innerHTML = "";
+                }
 
+            }
+            function validateHeight(e) 
+            {
+                const pattern = /^([3-5]{1})\'((\s?)(-?)(\s?)([0-9]|(1[0-1]))\")?$/;
+                const isValid = pattern.test(e.target.value);
+                debugger;
+                if (!isValid) {
+                    error = true;
+                    document.getElementById("errorh").innerHTML = "enter height under 3 to 6 ftS"
+                }
+                else {
+                    document.getElementById("errorh").innerHTML = "";
 
-           
+                }
+            }
+
             function validateForm(e) {
                 const formdata = new FormData(e.target);
                 const formprops = Object.fromEntries(formdata);
@@ -168,43 +189,93 @@
                     error = true;
                     document.getElementById('errorname').innerHTML = "Please enter a valid First Name";
                 }
-                
-                if(formprops.mobno ==="")
-                {
-                    error=true;
-                    document.getElementById('errormob').innerHTML="please enter a mobile no";
+                else {
+                    const pattern = /[a-zA-Z]{3,}/;
+                    const isValid = pattern.test(formprops.fname);
+                    if (!isValid) {
+                        error = true;
+                        document.getElementById('errorname').innerHTML = "Name should be of atleast  3 characters";
+                    }
+                }
+
+
+                if (formprops.mobno === "") {
+                    error = true;
+                    document.getElementById('errormob').innerHTML = "please enter a mobile no";
 
                 }
-                if(formprops.qual==="")
-                {
-                    error=true;
-                    document.getElementById('errorqual').innerHTML="please enter your qualification";
-                }
-                if(formprops.email==="")
-                {
-                    error=true;
-                    document.getElementById('erroremail').innerHTML="please enter ur email id";
-                }
-                if(formprops.age==="")
-                {
-                    error=true;
-                    document.getElementById('errorage').innerHTML="please enter your age";
+                else {
+                    const pattern = /^[6-9][0-9]{9}$/;
+
+                    const isValid = pattern.test(formprops.mobno);
+                    if (!isValid) {
+                        error = true;
+                        document.getElementById('errormob').innerHTML = "entered mobile no should be of 10 digits "
+                    }
 
                 }
-               
+
+                if (formprops.qual === "") {
+                    error = true;
+                    document.getElementById('errorqual').innerHTML = "please enter your qualification";
+                }
+                if (formprops.email === "") {
+                    error = true;
+                    document.getElementById('erroremail').innerHTML = "please enter ur email id";
+                }
+
+                else {
+                    const pattern = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
+                    const isValid = pattern.test(formprops.email);
+                    if (!isValid) {
+                        error = true;
+                        document.getElementById('erroremail').innerHTML = "entered email should be charaters,numbers sand symbols";
+
+                    }
+
+                }
+                if (formprops.age === "") {
+                    error = true;
+                    document.getElementById('errorage').innerHTML = "please enter your age";
+
+                }
+                else {
+                    const pattern = /^\S[12-60]$/;
+                    const isValid = pattern.test(formprops.age);
+                    if (!isValid) {
+                        error = true;
+                        document.getElementById('errorage').innerHTML = "enter age is min 12 upto 60"
+                    }
+                }
+                if (formprops.h === "") {
+                    error = true;
+                    document.getElementById("errorh").innerHTML = "please enter height";
+
+                }
+                else {
+                    const pattern = /^([3-5]{1})\'((\s?)(-?)(\s?)([0-9]|(1[0-1]))\")?$/;
+                    const isValid = pattern.test(formprops.h);
+
+                    if (!isValid) {
+                        error = true;
+                        document.getElementById("errorh").innerHTML = "enter height under 3 to 6 ft";
+                    }
+                }
+
                 return !error;
             }
 
             function myfunction(e) {
+                e.preventDefault();
                 if (validateForm(e)) {
 
-                    e.preventDefault();
                     const formdata = new FormData(e.target);
                     const formprops = Object.fromEntries(formdata);
                     var stringify = JSON.stringify(formprops);
                     alert("Registration succesful" + stringify)
 
                 }
+                e.preventDefault();
             }
 
 
