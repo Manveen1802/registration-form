@@ -1,0 +1,32 @@
+body
+{
+   
+    background-color: grey;
+    background-image: url("./assets/images/football.jpg" );
+    background-repeat: no-repeat;
+    background-position:center;
+}
+h1{
+    
+    text-align: center;
+    color: purple;
+}
+h2{
+    color: aqua;
+}
+
+.required-field::after {
+    content: ' *';
+    color: red;
+}
+
+.position-relative {
+    position: relative;
+}
+
+.error-msg {
+    position: absolute;
+    bottom: -20px;
+    left: 10px;
+    color: red;
+}
